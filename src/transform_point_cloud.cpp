@@ -41,7 +41,7 @@ private:
 
         sensor_msgs::PointCloud2 transformed_cloud;
         tf2::doTransform(*cloud_msg, transformed_cloud, transform_stamped);
-        transformed_cloud.header.frame_id = target_frame;
+        transformed_cloud.header = cloud_msg->header;
         pub.publish(transformed_cloud);
     }
 };
